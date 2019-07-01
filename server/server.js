@@ -1,6 +1,6 @@
 'use strict';
 
-const ioFactory = require('socket-io');
+const ioFactory = require('socket.io');
 const io = ioFactory(3000); // Listen for HTTP
 
 io.on('connection', (socket) => {
@@ -15,7 +15,7 @@ io.on('connection', (socket) => {
   socket.on('save', (payload) => {
     console.log('saving', payload);
 
-    socket.broadcast.emit('saved', payload);
+    socket.broadcast.emit('save', payload);
   });
 
   socket.on('error', (payload) => {
@@ -28,3 +28,5 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('spoken', 'Welcome ' + socket.id);
   }, 2000);
 });
+
+console.log('Server Started');
